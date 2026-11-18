@@ -30,9 +30,10 @@ validateUrl(site.github, 'GitHub 主页');
 if (!Array.isArray(allProjects)) throw new Error('作品内容必须是数组');
 const ids = new Set();
 for (const project of allProjects) {
-  for (const field of ['id', 'name', 'kind', 'summary', 'detail', 'tech']) {
+  for (const field of ['id', 'name', 'kind', 'summary', 'tech']) {
     if (typeof project[field] !== 'string' || !project[field].trim()) throw new Error(`项目缺少 ${field}`);
   }
+  if (!project.star && (typeof project.detail !== 'string' || !project.detail.trim())) throw new Error(`${project.name} 需要填写 STAR 项目经历或详情介绍`);
   if (!/^[a-z0-9-]+$/.test(project.id) || ids.has(project.id)) throw new Error(`项目 ID 无效或重复 ${project.id}`);
   ids.add(project.id);
   validateUrl(project.url, project.name);
@@ -43,6 +44,14 @@ for (const project of allProjects) {
     if (media?.split('/').includes('..')) throw new Error('媒体路径无效');
   }
   if (project.tone && !/^#[0-9a-fA-F]{6}$/.test(project.tone)) throw new Error('封面底色须为六位色值');
+  if (project.star) {
+    for (const field of ['situation', 'task']) {
+      if (typeof project.star[field] !== 'string' || !project.star[field].trim()) throw new Error(`${project.name} 的 STAR 内容缺少 ${field}`);
+    }
+    for (const field of ['actions', 'results']) {
+      if (!Array.isArray(project.star[field]) || !project.star[field].length || project.star[field].some(item => typeof item !== 'string' || !item.trim())) throw new Error(`${project.name} 的 STAR 内容缺少 ${field}`);
+    }
+  }
 }
 // Old entries without a publication flag remain visible.
 const projects = allProjects.filter((project) => project.published !== false);

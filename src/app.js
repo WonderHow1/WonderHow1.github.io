@@ -3,6 +3,40 @@ const projectDialog = document.querySelector('#project-dialog');
 
 document.querySelectorAll('canvas[data-scene]').forEach((canvas) => scene(canvas, canvas.dataset.scene));
 
+function renderExperience(project) {
+  const body = projectDialog.querySelector('.dialog-body');
+  body.replaceChildren();
+  if (!project.star) {
+    body.textContent = project.detail;
+    return;
+  }
+  const sections = [
+    ['项目背景（S）', project.star.situation],
+    ['目标任务（T）', project.star.task],
+    ['关键行动（A）', project.star.actions],
+    ['项目成果（R）', project.star.results],
+  ];
+  for (const [title, content] of sections) {
+    const section = document.createElement('section');
+    section.className = 'experience-section';
+    const heading = document.createElement('h3');
+    heading.textContent = title;
+    section.append(heading);
+    const text = document.createElement(Array.isArray(content) ? 'ul' : 'p');
+    if (Array.isArray(content)) {
+      for (const item of content) {
+        const point = document.createElement('li');
+        point.textContent = item;
+        text.append(point);
+      }
+    } else {
+      text.textContent = content;
+    }
+    section.append(text);
+    body.append(section);
+  }
+}
+
 function displayProject() {
   const id = location.hash.replace(/^#project-/, '');
   const project = projects.find((item) => item.id === id);
@@ -12,7 +46,7 @@ function displayProject() {
   }
   projectDialog.querySelector('#project-title').textContent = project.name;
   projectDialog.querySelector('.dialog-meta').textContent = `${project.kind} / ${project.tech}`;
-  projectDialog.querySelector('.dialog-body').textContent = project.detail;
+  renderExperience(project);
   const imageContainer = projectDialog.querySelector('.detail-image');
   const originalImage = projectDialog.querySelector('.original-image');
   originalImage.hidden = !project.cover || Boolean(project.video);
@@ -49,6 +83,7 @@ function displayProject() {
   else repositoryLink.removeAttribute('href');
   projectDialog.querySelector('.private-note').hidden = !project.private;
   if (!projectDialog.open) projectDialog.showModal();
+  projectDialog.scrollTop = 0;
 }
 
 window.addEventListener('hashchange', displayProject);

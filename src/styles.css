@@ -73,6 +73,10 @@ dialog .titlebar { position: sticky; top: 0; z-index: 2; }
 .detail-image.has-cover { height: 320px; margin-bottom: 4px; background: #fff; }
 .original-image { margin-bottom: 20px; }
 .dialog-body { white-space: pre-line; margin-bottom: 24px; }
+.experience-section + .experience-section { margin-top: 24px; }
+.experience-section h3 { font-size: 18px; margin-bottom: 10px; }
+.experience-section ul { margin: 0; padding-left: 22px; }
+.experience-section li + li { margin-top: 10px; }
 .private-note { border: 1px solid var(--line); padding: 14px; font-size: 14px; }
 .skip-link { position: fixed; left: 16px; top: -100px; z-index: 10; background: var(--paper); padding: 12px; border: 2px solid var(--ink); }
 .skip-link:focus { top: 12px; }
