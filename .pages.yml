@@ -1,0 +1,61 @@
+media:
+  input: site/media
+  output: media
+  rename: random
+content:
+  - name: site
+    label: 网站设置
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - { name: name, label: 署名, type: string, required: true }
+      - { name: github, label: GitHub 主页链接, type: string, required: true }
+      - { name: description, label: 搜索引擎介绍, type: text, required: true }
+  - name: projects
+    label: 作品管理
+    type: file
+    path: content/projects.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: 项目标识
+        type: string
+        required: true
+        description: 使用小写英文、数字和短横线，须与其他项目不同。用于分享链接。
+      - { name: name, label: 作品名称, type: string, required: true }
+      - { name: kind, label: 作品分类, type: string, required: true }
+      - { name: summary, label: 简短介绍, type: text, required: true }
+      - { name: detail, label: 完整介绍, type: text, required: true }
+      - { name: tech, label: 工具或技术, type: string, required: true }
+      - { name: cover, label: 作品封面, type: image }
+      - { name: coverAlt, label: 图片说明, type: string }
+      - name: video
+        label: 介绍视频
+        type: file
+        description: 上传 MP4 视频后，卡片支持直接播放，作品封面用作播放前的画面。
+      - { name: repo, label: GitHub 仓库名, type: string }
+      - { name: url, label: 自定义项目链接, type: string }
+      - name: private
+        label: 私有仓库
+        type: boolean
+        description: 开启后仍展示作品简介，并隐藏仓库链接。
+      - name: published
+        label: 发布到网站
+        type: boolean
+        default: true
+      - name: scene
+        label: 未上传封面时的像素图
+        type: select
+        options:
+          values:
+            - { name: phone, label: 训练产品 }
+            - { name: map, label: 思维导图 }
+            - { name: flow, label: 运营流程 }
+            - { name: chart, label: 数据看板 }
+            - { name: content, label: 内容创作 }
+      - name: tone
+        label: 封面底色
+        type: string
+        description: 六位颜色值，例如 #dce8f1。

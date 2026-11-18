@@ -1,0 +1,50 @@
+<!doctype html>
+<!--
+  用户选定 B 复古桌面，后续精简为直接浏览作品集。
+  近距离电脑及手机阅读，正文至少 16px。五项作品为内容核心。
+  私有项目采用用户已展示的仓库简介。
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{description}}">
+  <meta name="theme-color" content="#c3d1e5">
+  <title>{{name}} 的个人作品集</title>
+  <style>{{styles}}</style>
+</head>
+<body>
+  <a class="skip-link" href="#works">跳到作品集</a>
+  <div class="desktop">
+    <header class="topbar">
+      <a class="brand" href="#top"><span class="pixel-mark" aria-hidden="true">✳</span>{{name}}</a>
+      <nav aria-label="主导航">
+        <a class="github" href="{{github}}" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </header>
+    <main id="top">
+      <section id="works" aria-labelledby="works-title">
+        <div class="section-head">
+          <h1 id="works-title">作品集</h1>
+        </div>
+        <div class="projects">{{projects}}</div>
+        <noscript><p class="noscript-note">项目介绍可直接阅读。启用 JavaScript 后可查看完整详情。</p></noscript>
+      </section>
+    </main>
+  </div>
+  <dialog id="project-dialog" aria-labelledby="project-title">
+    <div class="titlebar"><span>项目详情</span><button class="close" aria-label="关闭项目详情">×</button></div>
+    <div class="dialog-content">
+      <p class="dialog-meta"></p><h2 id="project-title"></h2>
+      <div class="detail-image"></div>
+      <a class="original-image text-link" target="_blank" rel="noopener noreferrer" hidden>查看原尺寸图片</a>
+      <p class="dialog-body"></p>
+      <p class="private-note" hidden>此项目仓库为私有，这里展示项目简介。</p>
+      <a class="button repo-link" target="_blank" rel="noopener noreferrer">查看 GitHub 仓库</a>
+    </div>
+  </dialog>
+  <script id="portfolio-data" type="application/json">{{data}}</script>
+  <script>{{art}}
+{{script}}</script>
+</body>
+</html>
