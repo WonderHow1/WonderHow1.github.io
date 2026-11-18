@@ -27,15 +27,13 @@ content:
       - { name: name, label: 作品名称, type: string, required: true }
       - { name: kind, label: 作品分类, type: string, required: true }
       - { name: summary, label: 简短介绍, type: text, required: true }
-      - { name: detail, label: 备用详情, type: text, description: 未填写 STAR 项目经历时显示。 }
+      - { name: detail, label: 备用详情, type: text, description: 未填写项目经历时显示。 }
       - name: star
-        label: STAR 项目经历
+        label: 项目经历
         type: object
         fields:
-          - { name: situation, label: 项目背景（S）, type: text, required: true }
-          - { name: task, label: 目标任务（T）, type: text, required: true }
-          - { name: actions, label: 关键行动（A）, type: text, list: true, required: true }
-          - { name: results, label: 项目成果（R）, type: text, list: true, required: true }
+          - { name: actions, label: 主要工作, type: text, list: true, required: true }
+          - { name: results, label: 项目成果, type: text, list: true, required: true }
       - { name: tech, label: 工具或技术, type: string, required: true }
       - { name: cover, label: 作品封面, type: image }
       - { name: coverAlt, label: 图片说明, type: string }
