@@ -11,7 +11,9 @@ function renderExperience(project) {
     return;
   }
   const sections = [
-    ['主要工作', project.star.actions],
+    ['项目背景', project.star.situation],
+    ['目标任务', project.star.task],
+    ['关键行动', project.star.actions],
     ['项目成果', project.star.results],
   ];
   for (const [title, content] of sections) {
