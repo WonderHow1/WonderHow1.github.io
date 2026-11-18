@@ -21,7 +21,7 @@
     "repo": "wecom-segmentation-workbench",
     "kind": "vibe coding",
     "tech": "Python / 运营工具",
-    "private": true,
+    "private": false,
     "summary": "用 AI 辅助线索分层，把企微运营与飞书多维表格同步串起来。",
     "detail": "面向高途用户运营的 AI 提效项目，用于企微线索分层和飞书多维表格同步。",
     "scene": "flow",
