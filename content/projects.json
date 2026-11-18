@@ -4,7 +4,7 @@
     "name": "训练栖地app",
     "repo": "training-habitat",
     "kind": "vibe coding",
-    "tech": "iOS / MVP",
+    "tech": "Swift / MVP",
     "private": false,
     "summary": "一款结合训练记录与像素宠物养成的 iOS App，支持训练计划、计时与补记，让每次训练都成为宠物成长的经验。",
     "detail": "训练栖地是一款结合训练记录与像素宠物养成的 iOS App。用户可以制定训练计划、计时记录和补记训练，通过累计训练时长获得经验，陪伴宠物逐步成长。项目包含需求设计、交互原型、iOS MVP 与产品介绍视频。",
